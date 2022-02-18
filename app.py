@@ -161,15 +161,20 @@ def get_image(filename):
 def write_file():
     data = json.loads(request.data)
     print(data)
-    if data['action'] == 'append':
+    if data['action'] == 'file_name_append':
         file_obj = open('static/uploads/file.txt', 'a')
         file_obj.write(data['data']+'\n')
-    else:
+    elif data['action'] == 'file_name_write':
         file_obj = open('static/uploads/file.txt', 'w')
         file_obj.write(data['data']+'\n')
+    elif data['action'] == 'data_write':
+        file_obj = open('static/uploads/data.txt', 'w')
+        file_obj.write(data['data']['cost']+'\n')
+        file_obj.write(data['data']['weeks']+'\n')
     file_obj.close()
     resp = jsonify({'action': 'done'})
     return resp
+
 
 # app.run('localhost', 9001)
 

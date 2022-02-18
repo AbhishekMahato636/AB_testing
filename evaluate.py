@@ -7,13 +7,15 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 file = open("static/uploads/file.txt","r")
+file1 = open("static/uploads/data.txt","r")
 content = file.readlines()
+content1 = file1.readlines()
 test_control_file = content[0][:-1]
 performance_file = content[1][:-1]
-cost = int(content[2][:-1])
-period = int(content[3])
+cost = int(content1[0][:-1])
+period = int(content1[1])
 file.close()
-
+file1.close()
 test_cnt=pd.read_csv('./static/uploads/{}'.format(test_control_file))
 performance=pd.read_csv('./static/uploads/{}'.format(performance_file))
 
