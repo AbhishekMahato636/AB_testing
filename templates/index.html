@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css"-->
+    <!--          media="screen"/>-->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <script>
+        function chleft(color) {
+            document.getElementById('lefthead').style.backgroundColor = color;
+        }
+        function chright(color) {
+            document.getElementById('righthead').style.backgroundColor = color;
+        }
+        function chmid(color) {
+            document.getElementById('midhead').style.backgroundColor = color;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <h1>TEST-CONTROL MATCH PAIR</h1>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='nagarro.png')}}">
+            </div>
+        </nav>
+        <main>
+            <div class="lefthead" id="lefthead">Input</div>
+            <div class="midhead" id="midhead">Insights</div>
+            <div class="righthead" id="righthead">Output</div>
+        </main>
+
+        <div id="left" onmouseover="chleft('#47D7AC')" onmouseout="chleft('#13294b')">{% include "home.html" %}</div>
+        <div id="tiles" onmouseover="chmid('#47D7AC')" onmouseout="chmid('#13294b')" class="tiles">
+            <div id="tile1" class="tile">
+                <nav>
+                    <h5>Top 5 Observations: Population Data</h5>
+                </nav>
+                <img src="#" alt="name" id="df_pop" />
+            </div>
+            <div id="tile2" class="tile">
+                <nav>
+                    <h5>Top 5 Observations: Test Data</h5>
+                </nav>
+                <img src="#" alt="name" id="df_test" />
+            </div>
+            <div id="tile3" class="tile">
+                <div>
+                    <h3>Test - Control</h3>
+                    {% include "graph.html" %}
+                </div>
+            </div>
+            <div id="three_tiles">
+                <h3 id="three_t">Statistics</h3>
+                <div class="hs">
+                    <div id="tile4" class="horz tile">
+                        <nav>
+                            <h3>Population</h3>
+                        </nav>
+                        <img src="#" alt="name" id="stats_pop" />
+                    </div>
+                    <div id="tile5" class="horz tile">
+                        <nav>
+                            <h3>Test</h3>
+                        </nav>
+                        <img src="#" alt="name" id="stats_test" />
+                    </div>
+                    <div id="tile7" class="horz tile">
+                        <nav>
+                            <h3>Control</h3>
+                        </nav>
+                        <img src="#" alt="name" id="stats_control" />
+                    </div>
+                </div>
+            </div>
+            <div id="tile6" class="tile">
+                <nav>
+                    <h3>T-Test</h3>
+                </nav>
+                <img src="#" alt="name" id="t_test" />
+            </div>
+        </div>
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="right" onmouseover="chright('#47D7AC')" onmouseout="chright('#13294b')">
+            <div id="rightdiv">
+                <nav>
+                    <h5>Top 10 observation: Test Control Pair</h5>
+                </nav>
+                <img src="#" class="center" alt="name" id="test_control_pair" />
+                <div class="demo-container">
+                    <a href="{{url_for('static',filename='output.csv')}}" download>
+                        <button>Download</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="load" id="load"></div> -->
+</body>
+
+</html>
